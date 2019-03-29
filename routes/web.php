@@ -14,7 +14,8 @@ route::resource('/endroit','EndroitsController');
 route::get('upload','MenusController@index');
 route::post('upload','MenusController@store');
 route::resource('/menu','MenusController');
-
+Route::get('/import_excel', 'ImportsExcelController@index');
+Route::post('/import_excel/import', 'ImportsExcelController@import');
 route::get('/categorie',function(){
     return view('');
 });
