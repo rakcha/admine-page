@@ -17,13 +17,13 @@ class ImportsExcelController extends Controller
 
     function import(Request $request)
     {
-    // $this->validate($request, [
-    //  'select_file'  => 'required|mimes:xls,xlsx'
-    // ]);
+    $this->validate($request, [
+     'select_file'  => 'required|mimes:xlsx'
+    ]);
 
      $path = $request->file('select_file')->getRealPath();
 
-     $data = Excel::load($path)->get();
+     $data=Excel::load($path)->get();
 
      if($data->count() > 0)
      {

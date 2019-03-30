@@ -19,3 +19,6 @@ Route::post('/import_excel/import', 'ImportsExcelController@import');
 route::get('/categorie',function(){
     return view('');
 });
+Route::get('importExportView', 'ImportsController@importExportView');
+
+Route::post('import', 'ImportsController@import')->name('import');
