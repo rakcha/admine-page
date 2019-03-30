@@ -125,10 +125,10 @@
                     </tr>
                 </thead>
                 <tbody>
-			
+			 @foreach($menu ->all() as $row)
                     <tr>
                    
-				  @foreach($menu ->all() as $row)
+				 
 					   
                         <td>{{ $row -> id }}</td>
                         <td>{{ $row -> nom_comercial }}</td>
@@ -139,10 +139,10 @@
 						    <a href="#" class="edit"  ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
-                    @endforeach
+                  
                    
                     </tr>
-                  
+                    @endforeach
                 </tbody>
             </table>
 			
