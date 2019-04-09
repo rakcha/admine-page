@@ -11,19 +11,21 @@
 			<ul>
 
 					<li class="submenu">
-						<a href="index.html"><i class="fa fa-fw fa-th-large"></i><span> Categorie</span> </a>
+						<a href="{{url('/categories')}}"><i class="fa fa-fw fa-th-large"></i><span> Categorie</span> </a>
                     </li>
                     <li class="submenu">
 						<a href="{{url('/endroit')}}"><i class="fa fa-fw fa-map-marker"></i><span> Endroit</span> </a>
                     </li>
                     <li class="submenu">
-						<a href="{{url('/menu')}}"class="active"><i class="fa fa-fw fa-bars" ></i><span> Menu</span> </a>
+						<a href="{{url('/menu')}}" class="active"><i class="fa fa-fw fa-bars"></i><span> Menu</span> </a>
                     </li>
                     <li class="submenu">
-						<a href="index.html"><i class="fa fa-fw fa-users"></i><span> Partenaire</span> </a>
+						<a href="{{url('/partenaire')}}"><i class="fa fa-fw fa-users"></i><span> Partenaire</span> </a>
                     </li>
 					
             </ul>
+
+
 
             <div class="clearfix"></div>
 
@@ -75,7 +77,7 @@
 
         <div class="card-header">
 
-             Import Exporter leds donnée a la base de donnée 
+             Import le ficher a la base de donnée 
         </div>
 
         <div class="card-body">
@@ -84,11 +86,11 @@
 
                 @csrf
 
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file" class="form-control" required>
 
                 <br>
 
-                <button class="btn btn-success">Import User Data</button>
+                <button class="btn btn-success">Import Menu Data</button>
 
                
 
@@ -105,7 +107,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>gérer les <b>Menus</b></h2>
+						<h2>gérer les <b>Articles</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Nouveau Composant</span></a>
@@ -117,22 +119,23 @@
                 <thead>
                     <tr>
 					    <th>id</th>
-                        <th>Nom Comercial</th>
-                        <th>Categorie</th>
+                        <th>menu</th>
+                        <th>Type d'article</th>
 						<th>nom</th>
 						<th>Prix</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-			 @foreach($menu ->all() as $row)
+				@if(count($menus) > 0)
+			       @foreach($menus ->all() as $row)
                     <tr>
                    
 				 
 					   
                         <td>{{ $row -> id }}</td>
-                        <td>{{ $row -> nom_comercial }}</td>
-						<td>{{ $row -> Categorie }}</td>
+                        <td>{{ $row -> menu_id }}</td>
+						<td>{{ $row -> type_Article }}</td>
                         <td>{{ $row -> nom }}</td>
 						<td>{{ $row -> Prix }}</td>
                         <td>
@@ -143,6 +146,7 @@
                    
                     </tr>
                     @endforeach
+				@endif
                 </tbody>
             </table>
 			

@@ -11,7 +11,7 @@
 			<ul>
 
 					<li class="submenu">
-						<a href="index.html"><i class="fa fa-fw fa-th-large"></i><span> Categorie</span> </a>
+						<a href="{{url('/categories')}}"><i class="fa fa-fw fa-th-large"></i><span> Categorie</span> </a>
                     </li>
                     <li class="submenu">
 						<a href="{{url('/endroit')}}" class="active"><i class="fa fa-fw fa-map-marker"></i><span> Endroit</span> </a>
@@ -20,10 +20,12 @@
 						<a href="{{url('/menu')}}"><i class="fa fa-fw fa-bars"></i><span> Menu</span> </a>
                     </li>
                     <li class="submenu">
-						<a href="index.html"><i class="fa fa-fw fa-users"></i><span> Partenaire</span> </a>
+						<a href="{{url('/partenaire')}}"><i class="fa fa-fw fa-users"></i><span> Partenaire</span> </a>
                     </li>
 					
             </ul>
+
+
 
             <div class="clearfix"></div>
 
@@ -108,7 +110,7 @@
                         </td>
                     </tr>
                   @endforeach
-				  @endif
+				@endif
                 </tbody>
             </table>
 			

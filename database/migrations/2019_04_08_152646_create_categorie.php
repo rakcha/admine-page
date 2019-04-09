@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEndroitsTable extends Migration
+class CreateCategorie extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateEndroitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('endroits', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('logo');
-            $table->string('nom_comercial');
-            $table->string('adresse');
-            $table->string('num_telephone');
-            $table->integer('partenaire')->default(0);
-
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateEndroitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('endroits');
+        Schema::dropIfExists('categorie');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Imports;
-use App\menu;
+use App\article;
 use Illuminate\Support\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 
@@ -14,11 +14,12 @@ class menusImport implements ToModel
     */
     public function model(array $row)
     {
-        return new menu([
-            'nom_comercial'   => $row[0],
-         'nom'    => $row[1],
-         'Prix'  => $row[2],
-         'Categorie'   => $row[3],
+        return new article([
+            'menu_id'   => $row[0],
+            'type_Article'   => $row[1],
+            'nom'    => $row[2],
+            'Prix'  => $row[3],
+         
         ]);
     }
 }

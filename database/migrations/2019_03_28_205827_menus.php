@@ -15,10 +15,8 @@ class Menus extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
         $table->bigIncrements('id');     
-        $table->string('nom_comercial');
-        $table->string('Categorie');
         $table->string('nom');
-        $table->string('Prix');
+        $table->integer('endroit_id');
         $table->timestamps();
         });
     }

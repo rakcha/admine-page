@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
-use App\article;
-use input;
-class MenusController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +12,8 @@ class MenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        $menus = article::all();
-      
-       return view('menu')->with('menus',$menus);
+    {
+        return view('categories');
     }
 
     /**
@@ -36,9 +33,10 @@ class MenusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    
-}
+    {
+        //
+    }
+
     /**
      * Display the specified resource.
      *
@@ -47,8 +45,7 @@ class MenusController extends Controller
      */
     public function show($id)
     {
-      
-        
+        //
     }
 
     /**
@@ -84,7 +81,4 @@ class MenusController extends Controller
     {
         //
     }
-    function import(Request $request){
-        
-     }
 }
