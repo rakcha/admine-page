@@ -11,5 +11,3 @@ class article extends Model
         return $this ->BelongsTo('app\menu');
     }
 }
-
-

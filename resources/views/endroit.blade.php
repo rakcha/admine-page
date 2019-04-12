@@ -69,7 +69,13 @@
 	 </div>
 	 @endif
 	</div>						
-							
+	@if(count($errors)>0)
+					   @foreach($errors ->all() as $error)
+					      <div class="alert alert-danger">
+						  {{$error}}
+						  </div>
+						@endforeach
+					@endif  							
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -95,8 +101,8 @@
                     </tr>
                 </thead>
                 <tbody>
-				@if(count($endroits) > 0)
-				  @foreach($endroits ->all() as $endroit)
+				@if(count($data['endroits']) > 0)
+				  @foreach($data['endroits'] ->all() as $endroit)
                     <tr>
 						
 					    <td>{{ $endroit -> id }}</td>
@@ -113,14 +119,14 @@
 				@endif
                 </tbody>
             </table>
-			
-        </div>
+  
+	</div>
     </div>
 	<!-- Add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form method="POST" action="{{action('EndroitsController@store')}}">
+				<form method="POST" action="{{url('/store')}}">
 				{{csrf_field()}}
 				
 				   <fieldset>
@@ -146,6 +152,31 @@
 							<label>num_telephone</label>
 							<input type="text" class="form-control" name="num_telephone" required>
 						</div>					
+						
+	<div class="row">
+
+	    <div class="card col-12" >
+                 Default panel contents 
+                <div class="card-header">Select Categorie</div>
+            
+				<ul class="list-group list-group-flush">
+				@foreach($data['categories'] -> all() as $categorie)	   
+                	<li class="list-group-item ">
+	                 	<div class="row">
+		                 	<div class="col-10"> {{$categorie->name}}</div>	
+		                    	<div class="col-auto">	
+				                      <input type="checkbox" class="success"value="{{$categorie->name}}" name="{{$categorie->id}}">			
+				                      <span class="slider"></span>
+			                	  </label>
+			                    </div>	
+		                    </div>
+	                </li>
+	            @endforeach
+	
+                </ul>
+                </div>
+            </div>
+		</div>
 					</div>
 					<div class="modal-footer">
 					    <input type="submit" class="btn btn-success" value="Add">
@@ -196,6 +227,51 @@
 							<input type="text" name="num_telephone" id="num_telephone" class="form-control" required >
 						</div>					
 					</div>
+					<div class="row">
+
+<div class="card col-12" >
+		<!-- Default panel contents -->
+		<div class="card-header">Checkbox to Switch</div>
+	
+		<ol class="list-group list-group-flush">
+			
+		   
+			<li class="list-group-item">
+            patisserie				<span class="slider"></span>
+				</label>
+			</li>
+			<li class="list-group-item">
+			Fast Food				
+			<label class="switch ">
+				<input type="checkbox" class="success"value="2" name=>
+				<span class="slider"></span>
+				</label>
+			</li>
+			<li class="list-group-item">
+			Salon de the et Coffee-shops
+				<label class="switch ">
+				<input type="checkbox" class="success"value="3">
+				<span class="slider"></span>
+				</label>
+			</li>
+			<li class="list-group-item">
+			Restaurants et Lounges				<label class="switch ">
+				<input type="checkbox" class="success" value="4">
+				<span class="slider"></span>
+				</label>
+			</li>
+
+		   
+		</ol>
+
+   
+	</div>
+	<div class="funkyradio">
+				   <div class="funkyradio-success">
+					  <input type="checkbox" name="partenaire" id="checkbox3" value="1">
+					  <label for="checkbox3">C'est un partenaire</label>
+					</div>
+				</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 						<input type="submit" class="btn btn-info" value="Save">

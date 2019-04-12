@@ -10,10 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/endroit','EndroitsController');
+Route::get('/endroit','PlacesController@index');
+Route::post('/store','PlacesController@ajouter');
 Route::get('upload','MenusController@index');
 
-Route::resource('/menu','MenusController');
+
+
+Route::resource('/menu','ArticleController');
 Route::get('/import_excel', 'ImportsExcelController@index');
 Route::post('/import_excel/import', 'ImportsExcelController@import');
 route::get('/categorie',function(){

@@ -14,9 +14,9 @@ class MenusController extends Controller
      */
     public function index()
     { 
-        $menus = article::all();
+        $articles = article::all();
       
-       return view('menu')->with('menus',$menus);
+       return view('menu')->with('articles',$articles);
     }
 
     /**
@@ -37,7 +37,17 @@ class MenusController extends Controller
      */
     public function store(Request $request)
 {
-    
+    $article = new article;
+        
+        
+    $article -> type_Article  = $request->input('type_Article');
+    $article -> nom  = $request->input('nom');
+    $article -> Prix  = $request->input('Prix');
+    $article -> categorie_id  = $request->input('categorie_id');
+    $article ->save();
+    return redirect('/menu') -> with('info','article changed succesfully');
+  
+  
 }
     /**
      * Display the specified resource.
@@ -71,7 +81,14 @@ class MenusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article =  article::find($id);
+        $article -> type_Article  = $request->input('type_Article');
+        $article -> nom  = $request->input('nom');
+        $article -> Prix  = $request->input('Prix');
+        $article -> categorie_id  = $request->input('categorie_id');
+        $article ->save();
+        return redirect('/menu') -> with('info','article changed succesfully');
+      
     }
 
     /**

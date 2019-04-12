@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\endroit;
+
 use Illuminate\Http\Request;
-use Input;
-class EndroitsController extends Controller
+use App\article;
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,9 @@ class EndroitsController extends Controller
      */
     public function index()
     {
-        $endroits = endroit::all();
-        return view('endroit')->with('endroits',$endroits);
+        $menus = article::all();
+      
+        return view('menu')->with('menus',$menus);
     }
 
     /**
@@ -35,13 +36,16 @@ class EndroitsController extends Controller
      */
     public function store(Request $request)
     {
-        $endroits = new endroit;
-        $endroits -> logo = $request->input('logo');
-        $endroits -> nom_comercial = $request->input('nom_comercial');
-        $endroits -> adresse = $request->input('adresse');
-        $endroits -> num_telephone = $request->input('num_telephone');
-        $endroits ->save();
-        return redirect('/endroit') -> with('info','endroit saved succesfully');
+        $article = new article;
+        
+        
+    $article -> type_Article  = $request->input('type_Article');
+    $article -> nom  = $request->input('nom');
+    $article -> Prix  = $request->input('Prix');
+    $article -> categorie_id  = $request->input('categorie_id');
+    $article ->save();
+    return redirect('/menu') -> with('info','article changed succesfully');
+  
     }
 
     /**
@@ -52,9 +56,7 @@ class EndroitsController extends Controller
      */
     public function show($id)
     {
-        
-           
-        
+        //
     }
 
     /**
@@ -64,10 +66,9 @@ class EndroitsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-       
+    {
+        //
     }
-    
 
     /**
      * Update the specified resource in storage.
@@ -78,13 +79,14 @@ class EndroitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $endroits =  endroit::find($id);
-        $endroits -> logo = $request->input('logo');
-        $endroits -> nom_comercial = $request->input('nom_comercial');
-        $endroits -> adresse = $request->input('adresse');
-        $endroits -> num_telephone = $request->input('num_telephone');
-        $endroits ->save();
-       return redirect('/endroit') -> with('info','endroit changed succesfully');
+        $article =  article::find($id);
+        $article -> type_Article  = $request->input('type_Article');
+        $article -> nom  = $request->input('nom');
+        $article -> Prix  = $request->input('Prix');
+        $article -> categorie_id  = $request->input('categorie_id');
+        $article ->save();
+        return redirect('/menu') -> with('info','article changed succesfully');
+      
     }
 
     /**
@@ -95,9 +97,6 @@ class EndroitsController extends Controller
      */
     public function destroy($id)
     {
-        $endroits = endroit::find($id);
-        $endroits -> delete();
-        return redirect('/endroit') -> with('info','endroit deleted succesfully');
-
+        //
     }
 }

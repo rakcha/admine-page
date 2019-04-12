@@ -18,7 +18,7 @@
 		<!-- Bootstrap CSS -->
 		<link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
+        
 		<!-- Font Awesome CSS -->
 		<link href="{{url('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
 		

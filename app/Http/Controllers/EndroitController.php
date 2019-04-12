@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\endroit;
 use App\categorie;
-class CategoriesController extends Controller
+use App\categorie_endroit;
+use Input;
+use Illuminate\Http\Request;
+
+class EndroitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //$categories = categorie::all();
-        //return view('select_cat')->with('categories',$categories);
+        //
     }
 
     /**
@@ -35,7 +37,22 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $endroits = new endroit;
+        
+        
+        $endroits -> logo  = $request->input('logo');
+        $endroits -> nom_comercial  = $request->input('nom_comercial');
+		$endroits -> adresse  = $request->input('adresse');
+        $endroits -> num_telephone  = $request->input('num_telephone');
+        $endroits ->save();
+        foreach($categories->all() as $categorie){
+             if($request->$categorie->id == $categorie->name){
+                 $cat_end=new categorie_endroit;
+                 $cat_end -> categorie_id = $categorie -> id;
+                 $cat_end -> endroit_id = $endroits -> id;
+                 $cat_end ->save();
+             }       
+        }
     }
 
     /**
@@ -46,7 +63,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

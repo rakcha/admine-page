@@ -160,7 +160,7 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form method="POST" action="{{action('EndroitsController@store')}}">
+				<form method="POST" action="{{action('ArticleController@store')}}">
 				{{csrf_field()}}
 				
 				   <fieldset>
@@ -171,20 +171,20 @@
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>logo</label>
-							<input type="text" name="logo" class="form-control" required>
+							<label>type de l'article</label>
+							<input type="text" name="type_Article" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>nom_comercial</label>
-							<input type="text"  name="nom_comercial" class="form-control" required>
+							<label>nom de l'article</label>
+							<input type="text"  name="nom" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>adresse</label>
-							<input type="email" class="form-control" name="adresse" required>
+							<label>prix</label>
+							<input type="text" class="form-control" name="Prix" required>
 						</div>
 						<div class="form-group">
-							<label>num_telephone</label>
-							<input type="text" class="form-control" name="num_telephone" required>
+							<label>caregorie</label>
+							<input type="text" class="form-control" name="categorie_id" required>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -208,7 +208,7 @@
 	<div class="modal fade" id="editModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form method="POST" action="/endroit" id="editForm">
+				<form method="POST" action="/menu" id="editForm">
 				{{csrf_field()}}
 				{{method_field('PUT')}}
 
@@ -220,20 +220,26 @@
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>logo</label>
-							<input type="text" name="logo" id="logo" class="form-control" required >
+							<label>type de l'article</label>
+							<input type="text" name="type_Article" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>nom_comercial</label>
-							<input type="text" name="nom_comercial" id="nom_comercial" class="form-control" required >
+							<label>nom de l'article</label>
+							<input type="text"  name="nom" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Adresse</label>
-							<input type="email" name="adresse" id="adresse" class="form-control" required>
+							<label>prix</label>
+							<input type="text" class="form-control" name="Prix" required>
 						</div>
 						<div class="form-group">
-							<label>num_telephone</label>
-							<input type="text" name="num_telephone" id="num_telephone" class="form-control" required >
+							<label>categorie</label>
+							<select name="myselectbox">
+							@if($categories->count()>0)
+							   @foreach($categories->all()as $categorie)
+									<option name="myoption1" value="myoption1">myoption1</option>
+								@endforeach
+						    @endif	
+							</select>
 						</div>					
 					</div>
 					<div class="modal-footer">
@@ -249,7 +255,7 @@
 	<div id="deleteModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/endroit" id="deleteForm">
+				<form action="/menu" id="deleteForm">
 				{{csrf_field()}}
 				{{method_field('DELETE')}}
 					<div class="modal-header">						

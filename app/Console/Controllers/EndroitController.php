@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\endroit;
-use Illuminate\Http\Request;
+use App\categorie;
+use App\categorie_endroit;
 use Input;
-class EndroitsController extends Controller
+use Illuminate\Http\Request;
+
+class EndroitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +16,7 @@ class EndroitsController extends Controller
      */
     public function index()
     {
-        $endroits = endroit::all();
-        return view('endroit')->with('endroits',$endroits);
+        //
     }
 
     /**
@@ -37,13 +39,20 @@ class EndroitsController extends Controller
     {
         $endroits = new endroit;
         
-        $endroit -> id  = $request->input('id');
-        $endroit -> logo  = $request->input('logo');
-        $endroit -> nom_comercial  = $request->input('nom_comercial');
-		$endroit -> adresse  = $request->input('adresse');
-        $endroit -> num_telephone  = $request->input('num_telephone');
+        
+        $endroits -> logo  = $request->input('logo');
+        $endroits -> nom_comercial  = $request->input('nom_comercial');
+		$endroits -> adresse  = $request->input('adresse');
+        $endroits -> num_telephone  = $request->input('num_telephone');
         $endroits ->save();
-        return redirect('/endroit') -> with('info','endroit saved succesfully');
+        foreach($categories->all() as $categorie){
+             if($request->$categorie->id == $categorie->name){
+                 $cat_end=new categorie_endroit;
+                 $cat_end -> categorie_id = $categorie -> id;
+                 $cat_end -> endroit_id = $endroits -> id;
+                 $cat_end ->save();
+             }       
+        }
     }
 
     /**
@@ -55,8 +64,6 @@ class EndroitsController extends Controller
     public function show($id)
     {
         
-           
-        
     }
 
     /**
@@ -66,10 +73,9 @@ class EndroitsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-       
+    {
+        //
     }
-    
 
     /**
      * Update the specified resource in storage.
@@ -80,14 +86,7 @@ class EndroitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $endroits =  endroit::find($id);
-        $endroit -> id  = $request->input('id');
-        $endroit -> logo  = $request->input('logo');
-        $endroit -> nom_comercial  = $request->input('nom_comercial');
-		$endroit -> adresse  = $request->input('adresse');
-        $endroit -> num_telephone  = $request->input('num_telephone');        
-        $endroits ->save();
-       return redirect('/endroit') -> with('info','endroit changed succesfully');
+        //
     }
 
     /**
@@ -98,9 +97,6 @@ class EndroitsController extends Controller
      */
     public function destroy($id)
     {
-        $endroits = endroit::find($id);
-        $endroits -> delete();
-        return redirect('/endroit') -> with('info','endroit deleted succesfully');
-
+        //
     }
 }

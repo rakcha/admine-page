@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CatEndroit extends Migration
+class CreateCategorieEndroitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CatEndroit extends Migration
      */
     public function up()
     {
-        Schema::create('categorie_endroit', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('categorie_endroits', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('categorie_id')->unsigned();
-           // $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('categorie_id')->references('id')->on('categories');
             $table->integer('endroit_id')->unsigned();
-           // $table->foreign('endroit_id')->references('id')->on('endroits');
-    
-        });   
-     }
+            $table->foreign('endroit_id')->references('id')->on('endroits');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -30,6 +30,6 @@ class CatEndroit extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categorie_endroits');
     }
 }
